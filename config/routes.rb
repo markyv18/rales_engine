@@ -32,7 +32,7 @@ Rails.application.routes.draw do
         get "/find_all",  to: "find#index"
         get "/random",  to: "random#index"
       end
-      resources :invoices, except:[:new, :edit] do
+      resources :invoices, only:[:index, :show] do
       end
 
       namespace :items do
@@ -40,7 +40,7 @@ Rails.application.routes.draw do
         get "/find_all",  to: "find#index"
         get "/random",    to: "random#index"
       end
-      resources :items, except:[:new, :edit] do
+      resources :items, only:[:index, :show] do
       end
 
       namespace :invoice_items do
@@ -48,7 +48,7 @@ Rails.application.routes.draw do
         get "/find_all",  to: "find#index"
         get "/random",    to: "random#index"
       end
-      resources :invoice_items, except:[:new, :edit] do
+      resources :invoice_items, only:[:index, :show] do
       end
 
     end

@@ -98,4 +98,17 @@ describe "merchants API" do
 
   end
 
+  it "can find all merchants by id" do
+    create_list(:merchant, 5)
+
+    get "/api/v1/merchants/find_all?id=#{Merchant1.last.id}"
+    merchant = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to be_success
+
+    expect(merchant[:id]).to eq(Merchant.first.id)
+    expect(merchant[:id]).to_not eq(Merchant.last.id)
+
+  end
+
 end
