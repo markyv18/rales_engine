@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 20170503050709) do
     t.string "description"
   end
 
-<<<<<<< HEAD
   create_table "orders", force: :cascade do |t|
     t.string   "order_number"
     t.datetime "created_at",   null: false
@@ -51,7 +50,6 @@ ActiveRecord::Schema.define(version: 20170503050709) do
 
   add_foreign_key "invoice_items", "invoices"
   add_foreign_key "invoice_items", "items"
-=======
   create_table "customers", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"

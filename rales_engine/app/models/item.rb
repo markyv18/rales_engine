@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   has_many :invoices, through: :invoice_items
 
   def self.most_items(quantity)
-    .joins([invoices: :transactions]).where(transactions: {result: "success"}).group("items.id").order("sum(invoice_items.quantity) DESC").limit(1).name
-    # binding.pry
+    select("sum(invoice_items.quantity) as total_sold, items.id, items.name, items.description")
+    .joins(:invoice_items).group("items.id").order("total_sold DESC").limit(quantity)
   end
 end
