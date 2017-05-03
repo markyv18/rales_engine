@@ -1,19 +1,55 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  namespace :api do
+
+  namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      namespace :invoice_items do
-        get '/find', to: 'find#show'
-        get '/find_all', to: 'find#index'
+      namespace :customers do
+        get "/find",      to: "find#show"
+        get "/find_all",  to: "find#index"
+        get "/random",  to: "random#index"
       end
+      resources :customers, only:[:index, :show] do
+      end
+
+      namespace :merchants do
+        get "/find",      to: "find#show"
+        get "/find_all",  to: "find#index"
+        get "/random",    to: "random#index"
+      end
+      resources :merchants, only:[:index, :show] do
+      end
+
+      namespace :transactions do
+        get "/find",      to: "find#show"
+        get "/find_all",  to: "find#index"
+        get "/random",    to: "random#index"
+      end
+      resources :transactions, only:[:index, :show] do
+      end
+
+      namespace :invoices do
+        get "/find",      to: "find#show"
+        get "/find_all",  to: "find#index"
+        get "/random",  to: "random#index"
+      end
+      resources :invoices, except:[:new, :edit] do
+      end
+
       namespace :items do
-        get '/most_items', to: 'most_items#index'
+        get "/find",      to: "find#show"
+        get "/find_all",  to: "find#index"
+        get "/random",    to: "random#index"
       end
-      resources :items, except: [:new, :edit]
-      resources :invoices, except: [:new, :edit]
-      resources :invoice_items, except: [:new, :edit]
-      # get 'i/nvoice_items', to: 'invoice_items#index'
-      # get 'i/nvoice_items/:id', to: 'invoice_items#show'
+      resources :items, except:[:new, :edit] do
+      end
+
+      namespace :invoice_items do
+        get "/find",      to: "find#show"
+        get "/find_all",  to: "find#index"
+        get "/random",    to: "random#index"
+      end
+      resources :invoice_items, except:[:new, :edit] do
+      end
+
     end
   end
 end
