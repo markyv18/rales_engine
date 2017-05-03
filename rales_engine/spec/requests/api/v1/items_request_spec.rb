@@ -33,4 +33,25 @@ RSpec.describe "Items API" do
     expect(response).to be_success
     expect(top_item.first["id"]).to eq(item1.id)
   end
+
+  context "best day"
+    it "returns the item with the date with the most sales" do
+      create_date_1 = "2017-03-05T00:00:00.000Z"
+      create_date_2 = "2017-02-05T00:00:00.000Z"
+      create_date_3 = "2017-01-05T00:00:00.000Z"
+      item = create(:item)
+      invoice_items = create_list(:invoice_item, 2, quantity: 3,
+        item: item, invoice: create(:invoice, created_at: create_date_1)
+        )
+        invoice_items = create_list(:invoice_item, 2, quantity: 2,
+          item: item,
+          invoice: create(:invoice, created_at: create_date_2)
+        )
+
+        get "/api/v1/items/#{item.id}/best_day"
+        results = JSON.parse(response.body)
+        expect(response).to be_success
+        expect(results['best_day']).to eq(create_date_1)
+        expect(results['best_day']).to_not eq(create_date_2)        
+  end
 end
