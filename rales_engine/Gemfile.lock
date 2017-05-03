@@ -48,6 +48,7 @@ GEM
     arel (7.1.4)
     awesome_print (1.7.0)
     builder (3.2.3)
+    byebug (9.0.6)
     capybara (2.13.0)
       addressable
       mime-types (>= 1.16)
@@ -180,6 +181,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   awesome_print
+  byebug
   capybara
   database_cleaner
   factory_girl_rails
