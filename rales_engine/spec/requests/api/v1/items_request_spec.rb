@@ -52,6 +52,18 @@ RSpec.describe "Items API" do
     expect{delete "/api/v1/items/#{item.id}"}.to change(Item, :count).by(-1)
 
     expect(response).to be_success
-    # expect(Item.find(item.id).to raise_error(ActiveRecord::RecordNotFound))
+    expect(Item.count).to eq(0)
+  end
+
+  it "returns the item with the highest quantity sold" do
+    item1, item2, item3 = create_list(:item, 3)
+    create_list(:invoice_item, 4, item: item1)
+    create_list(:invoice_item, 3, item: item2)
+    create_list(:invoice_item, 1, item: item3)
+    get '/api/v1/items/most_items?quantity=1'
+    top_item = JSON.parse(response.body)
+
+    expect(response).to be_success
+    expect(top_item.first["id"].to eq(item1.id))
   end
 end
