@@ -39,6 +39,7 @@ Rails.application.routes.draw do
         get "/find_all",  to: "find#index"
         get "/random",    to: "random#index"
         get "/most_items", to: "most_items#index"
+        get "/:id/best_day", to: "best_day#show"
       end
       resources :items, except:[:new, :edit] do
       end

@@ -49,9 +49,10 @@ RSpec.describe "Items API" do
         )
 
         get "/api/v1/items/#{item.id}/best_day"
+        # binding.pry
         results = JSON.parse(response.body)
         expect(response).to be_success
         expect(results['best_day']).to eq(create_date_1)
-        expect(results['best_day']).to_not eq(create_date_2)        
+        expect(results['best_day']).to_not eq(create_date_2)
   end
 end

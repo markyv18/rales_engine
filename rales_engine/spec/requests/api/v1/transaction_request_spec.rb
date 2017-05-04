@@ -44,16 +44,16 @@ describe "transactions API" do
 
   it "can find a transaction by their credit_card" do
 
-    transaction1 = create(:transaction)
+    transaction1 = create(:transaction, credit_card: "12345")
     transaction2 = create(:transaction)
 
-    get "/api/v1/transactions/find?credit_card=#{transaction1.credit_card}"
+    get "/api/v1/transactions/find?credit_card=12345"
 
-    transaction = JSON.parse(response.body, symbolize_names: true)
+    transaction = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(transaction[:credit_card]).to eq(transaction1.credit_card)
-    expect(transaction[:credit_card]).to_not eq(transaction2.credit_card)
+    expect(transaction["credit_card"]).to eq(transaction1.credit_card)
+    expect(transaction["credit_card"]).to_not eq(transaction2.credit_card)
 
   end
 
@@ -79,11 +79,11 @@ describe "transactions API" do
 
     get "/api/v1/transactions/find?invoice_id=#{transaction1.invoice_id}"
 
-    transaction = JSON.parse(response.body, symbolize_names: true)
+    transaction = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(transaction[:invoice_id]).to eq(transaction1.invoice_id)
-    expect(transaction[:invoice_id]).to_not eq(transaction2.invoice_id)
+    expect(transaction["invoice_id"]).to eq(transaction1.invoice_id)
+    expect(transaction["invoice_id"]).to_not eq(transaction2.invoice_id)
 
   end
 
