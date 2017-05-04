@@ -21,38 +21,37 @@ RSpec.describe "Items API" do
     expect(item["id"]).to eq(id)
   end
 
-  it "returns the item with the highest quantity sold" do
-    item1, item2, item3 = create_list(:item, 3)
-    create_list(:invoice_item, 4, item: item1)
-    create_list(:invoice_item, 3, item: item2)
-    create_list(:invoice_item, 1, item: item3)
-    # binding.pry
-    get '/api/v1/items/most_items?quantity=1'
-    top_item = JSON.parse(response.body)
+  it "can create a new item" do
+    item_params = { name: "Dr Evil", decription: "One Million?"}
+
+    post "/api/v1/items", params: {item: item_params}
+    item = Item.last
 
     expect(response).to be_success
-    expect(top_item.first["id"]).to eq(item1.id)
+    expect(item.name).to eq(item_params[:name])
   end
 
-  context "best day"
-    it "returns the item with the date with the most sales" do
-      create_date_1 = "2017-03-05T00:00:00.000Z"
-      create_date_2 = "2017-02-05T00:00:00.000Z"
-      create_date_3 = "2017-01-05T00:00:00.000Z"
-      item = create(:item)
-      invoice_items = create_list(:invoice_item, 2, quantity: 3,
-        item: item, invoice: create(:invoice, created_at: create_date_1)
-        )
-      invoice_items = create_list(:invoice_item, 2, quantity: 2,
-        item: item,
-        invoice: create(:invoice, created_at: create_date_2)
-      )
+  it "can update an existing item" do
+    id = create(:item).id
+    previous_name = Item.last.name
+    item_params = { name: "Jason Voorhees"}
 
-      get "/api/v1/items/#{item.id}/best_day"
-      binding.pry
-      results = JSON.parse(response.body)
-      expect(response).to be_success
-      expect(results['best_day']).to eq(create_date_1)
-      expect(results['best_day']).to_not eq(create_date_2)
+    put "/api/v1/items/#{id}", params: {item: item_params}
+    item = Item.find_by(id: id)
+
+    expect(response).to be_success
+    expect(item.name).to_not eq(previous_name)
+    expect(item.name).to eq("Jason Voorhees")
+  end
+
+  it "can destroy an item" do
+    item = create(:item)
+
+    expect(Item.count).to eq(1)
+
+    expect{delete "/api/v1/items/#{item.id}"}.to change(Item, :count).by(-1)
+
+    expect(response).to be_success
+    # expect(Item.find(item.id).to raise_error(ActiveRecord::RecordNotFound))
   end
 end
