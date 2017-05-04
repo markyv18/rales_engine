@@ -1,5 +1,5 @@
 class Api::V1::Transactions::RandomController < ApplicationController
-  def show
+  def index
     render json: Transaction.random
   end
 end

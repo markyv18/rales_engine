@@ -1,5 +1,5 @@
 class Api::V1::Merchants::RandomController < ApplicationController
-  def show
+  def index
     render json: Merchant.random
   end
 end
