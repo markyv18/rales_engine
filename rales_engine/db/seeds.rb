@@ -33,7 +33,6 @@ class Intake
 
   def upload_csv
     upload_csv = csv
-    upload_csv.delete("id")
     upload_csv
   end
 
@@ -54,7 +53,7 @@ class Intake
     when :invoice_items
       upload_invoice_item
     when :items
-      upload_invoice_item
+      upload_item
     when :merchants
       upload_merchant
     when :transactions
@@ -73,7 +72,7 @@ class Intake
 
   def upload_customer
     upload_csv.each do |row|
-      Customer.create(row.to_h)
+      Customer.create!(row.to_h)
     end
   end
 
@@ -81,16 +80,17 @@ class Intake
     upload_csv.each do |row|
       merchant = Merchant.find(row["merchant_id"])
       row.delete("merchant_id")
-      merchant.invoices.create(row.to_h)
+      merchant.invoices.create!(row.to_h)
     end
   end
 
   def upload_invoice_item
     upload_csv.each do |row|
+      # binding.pry
       invoice = Invoice.find(row["invoice_id"])
       row.delete("invoice_id")
-      row["unit_price"] = convert_to_currency(row["unit_price"])
-      invoice.invoice_items.create(row.to_h)
+      # row["unit_price"] = convert_to_currency(row["unit_price"])
+      invoice.invoice_items.create!(row.to_h)
     end
   end
 
@@ -98,14 +98,16 @@ class Intake
     upload_csv.each do |row|
       merchant = Merchant.find(row["merchant_id"])
       row.delete("merchant_id")
-      row["unit_price"] = convert_to_currency(row["unit_price"])
-      merchant.items.create(row.to_h)
+      # row["unit_price"] = convert_to_currency(row["unit_price"])
+      merchant.items.create!(row.to_h)
     end
   end
 
+  # def convert_to_currency
+
   def upload_merchant
     upload_csv.each do |row|
-      Merchant.create(row.to_h)
+      Merchant.create!(row.to_h)
     end
   end
 
@@ -114,10 +116,17 @@ class Intake
       invoice = Invoice.find(row["invoice_id"])
       row.delete("invoice_id")
       row["credit_card_expiration_date"] = Date.new(2018,3)
-      invoice.transactions.create(row.to_h)
+      invoice.transactions.create!(row.to_h)
     end
   end
 end
+
+InvoiceItem.delete_all
+Transaction.delete_all
+Invoice.delete_all
+Item.delete_all
+Merchant.delete_all
+Customer.delete_all
 
 files = [:customers, :merchants, :invoices, :items, :transactions, :invoice_items]
 

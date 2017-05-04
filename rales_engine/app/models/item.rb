@@ -9,7 +9,11 @@ class Item < ApplicationRecord
   end
 
   def self.best_day(id)
-    # binding.pry
+    select("invoices.created_at, count(invoices.id) as number_of_sales")
+    .joins(:invoices)
+    .group("invoices.created_at")
+    .order("number_of_sales DESC")
+    .where("items.id = ?", id).first
   end
 
 end

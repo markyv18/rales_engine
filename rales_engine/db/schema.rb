@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170504034805) do
+ActiveRecord::Schema.define(version: 20170504193937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,9 +46,12 @@ ActiveRecord::Schema.define(version: 20170504034805) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string  "name"
-    t.string  "description"
-    t.integer "merchant_id"
+    t.string   "name"
+    t.string   "description"
+    t.integer  "merchant_id"
+    t.integer  "unit_price"
+    t.datetime "created_at",  default: '2017-05-04 19:35:11', null: false
+    t.datetime "updated_at",  default: '2017-05-04 19:35:11', null: false
     t.index ["merchant_id"], name: "index_items_on_merchant_id", using: :btree
   end
 
@@ -67,9 +70,11 @@ ActiveRecord::Schema.define(version: 20170504034805) do
   create_table "transactions", force: :cascade do |t|
     t.string   "credit_card"
     t.string   "result"
-    t.datetime "created_at",  precision: 0
-    t.datetime "updated_at",  precision: 0
+    t.datetime "created_at",                  precision: 0
+    t.datetime "updated_at",                  precision: 0
     t.integer  "invoice_id"
+    t.string   "credit_card_number"
+    t.string   "credit_card_expiration_date"
     t.index ["invoice_id"], name: "index_transactions_on_invoice_id", using: :btree
   end
 

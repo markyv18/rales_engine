@@ -43,16 +43,16 @@ RSpec.describe "Items API" do
       invoice_items = create_list(:invoice_item, 2, quantity: 3,
         item: item, invoice: create(:invoice, created_at: create_date_1)
         )
-        invoice_items = create_list(:invoice_item, 2, quantity: 2,
-          item: item,
-          invoice: create(:invoice, created_at: create_date_2)
-        )
+      invoice_items = create_list(:invoice_item, 2, quantity: 2,
+        item: item,
+        invoice: create(:invoice, created_at: create_date_2)
+      )
 
-        get "/api/v1/items/#{item.id}/best_day"
-        # binding.pry
-        results = JSON.parse(response.body)
-        expect(response).to be_success
-        expect(results['best_day']).to eq(create_date_1)
-        expect(results['best_day']).to_not eq(create_date_2)
+      get "/api/v1/items/#{item.id}/best_day"
+      binding.pry
+      results = JSON.parse(response.body)
+      expect(response).to be_success
+      expect(results['best_day']).to eq(create_date_1)
+      expect(results['best_day']).to_not eq(create_date_2)
   end
 end
