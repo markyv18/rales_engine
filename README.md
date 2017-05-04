@@ -1,19 +1,5 @@
 # rales_engine
 
-A web app sales analysis tool.
-
-How to run on your machine:
-
-Navigate to your terminal and...
-
-Type and enter: git clone git@github.com:blackknight75/rails-engine.git
-
-Type and enter: bundle
-
-Type and enter: rake db:create
-                rake db:migrate
-                rake db:seed
-
 Type and enter: Run rspec
 This runs tests that confirm the valid operation of the tools in this application. F's denote a failing test while a "." denotes a passing test.  
 
