@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :invoice do
-    name "Dr Evil purchase"
-    description "One FaFillion"
+    name {Faker::Name.name}
+    description {Faker::Name.last_name}
   end
 end

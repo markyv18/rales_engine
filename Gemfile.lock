@@ -45,14 +45,20 @@ GEM
       tzinfo (~> 1.1)
     arel (7.1.4)
     awesome_print (1.7.0)
+    blazer (1.8.0)
+      chartkick
+      rails
+      safely_block (>= 0.1.1)
     builder (3.2.3)
     byebug (9.0.6)
     case_transform (0.2)
       activesupport
+    chartkick (2.2.4)
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
     database_cleaner (1.5.3)
     diff-lcs (1.3)
+    errbase (0.0.3)
     erubis (2.7.0)
     factory_girl (4.7.0)
       activesupport (>= 3.0.0)
@@ -135,6 +141,8 @@ GEM
       rspec-mocks (~> 3.5.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
+    safely_block (0.2.0)
+      errbase
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
     slop (3.6.0)
@@ -160,6 +168,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   awesome_print
+  blazer
   byebug
   database_cleaner
   factory_girl_rails
@@ -175,4 +184,4 @@ DEPENDENCIES
   tzinfo-data
 
 BUNDLED WITH
-   1.14.6
+   1.15.1
