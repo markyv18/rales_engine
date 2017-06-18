@@ -1,11 +1,10 @@
 require 'rails_helper'
 
 describe "merchants API" do
-
-  it "returns all merchants" do
+  it "sends a list of merchants" do
     create_list(:merchant, 5)
 
-    get "/api/v1/merchants"
+    get '/api/v1/merchants'
 
     expect(response).to be_success
 
@@ -13,11 +12,10 @@ describe "merchants API" do
     merchant = merchants.first
 
     expect(merchants.count).to eq(5)
-    expect(merchant).to have_key(:name)
-
+    expect(merchant[:name]).to be_a String
   end
 
-  it "can return one merchant by that merchants id" do
+  it "returns a single merchant based on id" do
     merchant_id = create(:merchant).id
 
     get "/api/v1/merchants/#{merchant_id}"
@@ -28,8 +26,8 @@ describe "merchants API" do
     expect(merchant[:id]).to eq(merchant_id)
   end
 
-
   it "can find a merchant by their id" do
+    create_list(:merchant, 5)
     merchant1 = create(:merchant)
     merchant2 = create(:merchant)
 
@@ -44,10 +42,8 @@ describe "merchants API" do
   end
 
   it "can find a merchant by their name" do
-
-    merchant1 = create(:merchant, name: "fuck off")
-    merchant2 = create(:merchant, name: "no!")
-
+    merchant1 = create(:merchant)
+    merchant2 = create(:merchant)
     get "/api/v1/merchants/find?name=#{merchant1.name}"
 
     merchant = JSON.parse(response.body, symbolize_names: true)
@@ -102,21 +98,19 @@ describe "merchants API" do
     create_list(:merchant, 5)
 
     get "/api/v1/merchants/find_all?id=#{Merchant.last.id}"
-    merchant = JSON.parse(response.body)  #symbolize_names is not working for this :id
-    #test consisitently runs at a +4 increment... reset DB and still getting +4.. figure it's about right, everything else looks good.
+    merchant = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_success
 
     expect(merchant.count).to eq(1)
-    expect(merchant.first["id"]).to eq(Merchant.last.id)
+    expect(merchant.first[:id]).to eq(Merchant.last.id)
   end
 
   it "can find all merchants by name" do
-    create_list(:merchant, 5)
     create_list(:merchant, 3, name: "Beavis")
 
     get "/api/v1/merchants/find_all?name=Beavis"
-    merchant = JSON.parse(response.body)
+    merchant = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_success
 
@@ -125,11 +119,10 @@ describe "merchants API" do
 
   it "can find all merchants by created_at timestamp" do
     timestamp = "2017-01-01T00:00:00.000Z"
-    create_list(:merchant, 5)
     create_list(:merchant, 3, created_at: timestamp)
 
     get "/api/v1/merchants/find_all?created_at=#{timestamp}"
-    merchant = JSON.parse(response.body)
+    merchant = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_success
 
@@ -142,7 +135,7 @@ describe "merchants API" do
     create_list(:merchant, 3, updated_at: timestamp)
 
     get "/api/v1/merchants/find_all?updated_at=#{timestamp}"
-    merchant = JSON.parse(response.body)
+    merchant = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_success
 
@@ -153,12 +146,13 @@ describe "merchants API" do
     create_list(:merchant, 5)
 
     get "/api/v1/merchants/random"
-    merchant = JSON.parse(response.body)
+    merchant = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_success
 
-    expect(merchant["id"]).to be_a(Integer)
-    expect(merchant["name"]).to be_a(String)
+    expect(merchant[:id]).to be_a(Integer)
+    expect(merchant[:name]).to be_a(String)
   end
+
 
 end

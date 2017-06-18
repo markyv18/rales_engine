@@ -4,5 +4,4 @@ class Item < ApplicationRecord
     order("RANDOM()").first
   end
 
-
 end
