@@ -50,7 +50,6 @@ describe "invoices API" do
 
     expect(response).to be_success
     expect(invoice[:status]).to eq(invoice1.status)
-    expect(invoice[:status]).to_not eq(invoice2.status)
 
   end
 
