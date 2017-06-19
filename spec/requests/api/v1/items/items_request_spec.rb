@@ -143,6 +143,17 @@ describe "items API" do
     expect(item.count).to eq(3)
   end
 
+  it "can find all items by their unit price" do
+    items = create_list(:item, 3, unit_price: 1)
+    create_list(:item, 4)
+
+    get "/api/v1/items/find_all?unit_price=1"
+
+    results = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to be_success
+    expect(results.count).to eq(3)
+  end
 
   it "can find all items by created_at timestamp" do
     timestamp = "2017-01-01T00:00:00.000Z"
