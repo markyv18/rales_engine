@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :invoice do
-    name {Faker::Name.name}
-    description {Faker::Name.last_name}
+    status ["ordered", "paid", "shipped", "closed"].sample
   end
 end

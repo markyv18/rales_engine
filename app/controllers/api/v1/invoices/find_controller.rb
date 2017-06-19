@@ -10,6 +10,6 @@ class Api::V1::Invoices::FindController < ApplicationController
   private
 
   def strong_params
-    params.permit(:id, :name, :description, :created_at, :updated_at)
+    params.permit(:id, :status, :created_at, :updated_at)
   end
 end
