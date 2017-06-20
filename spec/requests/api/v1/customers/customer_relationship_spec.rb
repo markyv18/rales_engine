@@ -46,7 +46,7 @@ describe "customers API and biz intelligence" do
 
     get "/api/v1/customers/#{customer.id}/favorite_merchant"
 
-    result = JSON.parse(response.body)
+    result = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_success
     expect(result[:id]).to eq(merchants.first.id)

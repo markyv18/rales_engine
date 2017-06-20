@@ -1,18 +1,17 @@
 Rails.application.routes.draw do
 
-  # mount Blazer::Engine, at: "blazer"
-
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
 
       namespace :customers do
-        get "/find",      to: "find#show"
-        get "/find_all",  to: "find#index"
-        get "/random",    to: "random#index"
+        get "/find",              to: "find#show"
+        get "/find_all",          to: "find#index"
+        get "/random",            to: "random#index"
       end
       resources :customers, only:[:index, :show] do
-        get "/transactions",  to: "customers/transactions#index"
-        get "/invoices",      to: "customers/invoices#index"
+        get "/transactions",      to: "customers/transactions#index"
+        get "/invoices",          to: "customers/invoices#index"
+        get "/favorite_merchant", to: "customers/favorite_merchant#show"
       end
 
       namespace :invoice_items do

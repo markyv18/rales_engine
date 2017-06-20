@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 gem 'rails', '~> 5.0.2'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
@@ -15,17 +14,16 @@ gem 'active_model_serializers'
 gem "awesome_print", require:"ap"
 
 group :development, :test do
-    gem 'byebug', platform: :mri
-    gem 'pry'
-    gem 'factory_girl_rails'
-    gem 'rspec-rails'
-    gem 'database_cleaner'
-    gem 'faker'
+  gem 'byebug', platform: :mri
+  gem 'pry'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'database_cleaner'
+  gem 'faker'
 end
 
 group :development do
   gem 'listen', '~> 3.0.5'
-  gem 'blazer'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
