@@ -18,4 +18,33 @@ class Customer < ApplicationRecord
                       ORDER BY count(customers.id) DESC;").first
 
   end
+
+  def self.with_pending_invoice(merchant_id)
+    self.find_by_sql("SELECT customers.*
+                      FROM merchants
+                      INNER JOIN invoices
+                      ON invoices.merchant_id = merchant_id
+                      INNER JOIN customers
+                      ON customers.id = invoices.customer_id
+                      WHERE invoices.status = 'pending'
+                      GROUP BY customers.id;")
+  end
+
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#
