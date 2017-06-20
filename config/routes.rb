@@ -52,8 +52,9 @@ Rails.application.routes.draw do
         get "/random",    to: "random#index"
       end
       resources :merchants, only:[:index, :show] do
-        get "/invoices",  to: "merchants/invoices#index"
-        get "/items",     to: "merchants/items#index"
+        get "/invoices",          to: "merchants/invoices#index"
+        get "/items",             to: "merchants/items#index"
+        get "/favorite_customer", to: "merchants/favorite_customer#show"
       end
 
       namespace :transactions do
