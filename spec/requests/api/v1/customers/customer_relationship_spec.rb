@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "customers API" do
+describe "customers API and biz intelligence" do
   it "finds all the invoices for a particular customer" do
     customer1 = create(:customer, id: 1)
     customer2 = create(:customer, id: 2)
@@ -37,21 +37,20 @@ describe "customers API" do
       expect(results.third[:id]).to eq(transaction3.id)
     end
 
-    # GET /api/v1/customers/:id/favorite_merchant
-  # xit "can find a customer's favorite merchant" do
-  #   customer = create(:customer)
-  #   merchants = create_list(:merchant, 3)
-  #   create_list(:invoice, 10, customer: customer, merchant: merchants.first)
-  #   create_list(:invoice, 5, customer: customer, merchant: merchants.second)
-  #   create_list(:invoice, 1, customer: customer, merchant: merchants.third)
-  #
-  #   get "/api/v1/customers/#{customer.id}/favorite_merchant"
-  #
-  #   result = JSON.parse(response.body)
-  #
-  #   expect(response).to be_success
-  #   expect(result["id"]).to eq(merchants.first.id)
-  #   expect(result["name"]).to eq(merchants.first.name)
-  # end
+  it "BI customer endpoint - can find a customer's fav merchant" do
+    customer = create(:customer)
+    merchants = create_list(:merchant, 3)
+    create_list(:invoice, 3, customer: customer, merchant: merchants.first)
+    create_list(:invoice, 2, customer: customer, merchant: merchants.second)
+    create_list(:invoice, 1, customer: customer, merchant: merchants.third)
+
+    get "/api/v1/customers/#{customer.id}/favorite_merchant"
+
+    result = JSON.parse(response.body)
+
+    expect(response).to be_success
+    expect(result[:id]).to eq(merchants.first.id)
+    expect(result[:name]).to eq(merchants.first.name)
+  end
 
 end
