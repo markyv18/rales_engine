@@ -1,21 +1,41 @@
 require 'rails_helper'
 
 describe "customers API" do
-  it "sends a list of customers" do
-    create_list(:customer, 5)
+  it "finds all the invoices for a particular customer" do
+    customer1 = create(:customer, id: 1)
+    customer2 = create(:customer, id: 2)
+    invoice1 = create_list(:invoice, 2, customer: customer1)
+    invoice2 = create_list(:invoice, 2, customer: customer2)
 
-    get '/api/v1/customers'
+    get "/api/v1/customers/1/invoices"
 
     expect(response).to be_success
 
-    customers = JSON.parse(response.body, symbolize_names: true)
-    customer = customers.first
+    invoices = JSON.parse(response.body, symbolize_names: true)
 
-    expect(customers.count).to eq(5)
-    expect(customer[:first_name]).to be_a String
-    expect(customer[:last_name]).to be_a String
-    expect(customer).to have_key(:first_name)
-    expect(customer).to have_key(:last_name)
+    expect(invoices.count).to eq(2)
+    expect(invoices.first[:id]).to eq(invoice1.first[:id])
   end
+
+  it "finds all the transactions for a particular customer" do
+      customer = create(:customer)
+      invoice = create(:invoice, customer: customer)
+      transaction1 = create(:transaction, invoice: invoice)
+      transaction2 = create(:transaction, invoice: invoice)
+      transaction3 = create(:transaction, invoice: invoice)
+      create_list(:transaction, 4)
+
+      get "/api/v1/customers/#{customer.id}/transactions"
+
+      results = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_success
+      expect(results.count).to eq(3)
+
+      expect(results.first[:id]).to eq(transaction1.id)
+      expect(results.second[:id]).to eq(transaction2.id)
+      expect(results.third[:id]).to eq(transaction3.id)
+    end
+
 
 end

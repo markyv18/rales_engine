@@ -1,5 +1,11 @@
 require 'rails_helper'
 
+
+      # GET /api/v1/items/most_revenue?quantity=x
+      # GET /api/v1/items/:id/best_day
+      # GET /api/v1/items/most_items?quantity=x
+
+
 describe "invoice_items relationship APIs" do
   it "returns the invoice for a given invoice_item" do
     invoice = create(:invoice)

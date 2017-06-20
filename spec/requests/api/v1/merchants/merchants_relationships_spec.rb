@@ -1,5 +1,14 @@
 require 'rails_helper'
 
+# GET /api/v1/merchants/revenue?date=x
+# GET /api/v1/merchants/most_revenue?quantity=x
+# GET /api/v1/merchants/:id/customers_with_pending_invoices
+# GET /api/v1/merchants/:id/favorite_customer
+# GET /api/v1/merchants/:id/revenue
+# GET /api/v1/merchants/:id/revenue?date=x
+# GET /api/v1/merchants/most_items?quantity=x
+
+
 describe "merchants relationships" do
 
   it "can find all the items that a merchant sells" do
