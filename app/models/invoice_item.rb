@@ -6,4 +6,6 @@ class InvoiceItem < ApplicationRecord
     order("RANDOM()").first
   end
 
+  
+
 end
