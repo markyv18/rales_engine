@@ -1,18 +1,15 @@
 require 'rails_helper'
 
-describe "transactions API" do
-  it "returns all transactions" do
-    create_list(:transaction, 5)
+describe "transactions relationships" do
+  it "can find the invoice of a transaction" do
+    invoice = create(:invoice)
+    transaction = create(:transaction, invoice_id: invoice.id)
 
-    get "/api/v1/transactions"
+    get "/api/v1/transactions/#{transaction.id}/invoice"
+
+    invoice = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_success
-
-    transactions = JSON.parse(response.body, symbolize_names: true)
-    transaction = transactions.first
-
-    expect(transactions.count).to eq(5)
-    expect(transaction).to have_key(:credit_card)
-
+    expect(transaction[:invoice_id]).to eq(invoice[:id])
   end
 end

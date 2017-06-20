@@ -30,6 +30,7 @@ describe "customers API" do
   end
 
   it "can find a customer by their id" do
+    create_list(:customer, 5)
     customer1 = create(:customer)
     customer2 = create(:customer)
 
@@ -46,7 +47,6 @@ describe "customers API" do
   it "can find a customer by their first_name" do
     customer1 = create(:customer)
     customer2 = create(:customer)
-
     get "/api/v1/customers/find?first_name=#{customer1.first_name}"
 
     customer = JSON.parse(response.body, symbolize_names: true)

@@ -228,3 +228,1445 @@ Migrating to AddTimestampsToTransactions (20170503050709)
   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (19.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(185307495455867925);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (12.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateInvoiceItems (20170504063843)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (25.9ms)[0m  [1m[35mCREATE TABLE "invoice_items" ("id" serial primary key, "quantity" integer, "unit_price" integer)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170504063843"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(185307495455867925)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/api/v1/sales" for ::1 at 2017-06-06 20:13:54 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (24.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/sales"):
+  
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered collection of /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [30 times] (18.7ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (10.7ms)
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (12.4ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (122.0ms)
+Started GET "/api/v1/customers/find" for ::1 at 2017-06-06 20:14:14 -0600
+Processing by Api::V1::Customers::FindController#show as JSON
+Unpermitted parameter: format
+  [1m[36mCustomer Load (26.0ms)[0m  [1m[34mSELECT  "customers".* FROM "customers" LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.17ms)
+Completed 200 OK in 48ms (Views: 11.4ms | ActiveRecord: 28.6ms)
+
+
+Started GET "/api/v1/invoice_items/find" for ::1 at 2017-06-06 20:15:04 -0600
+  
+LoadError (Unable to autoload constant Api::V1::InvoiceItems, expected /Users/MVA/mod3/projects/rales_engine/app/controllers/api/v1/invoice_items.rb to define it):
+  
+activesupport (5.0.2) lib/active_support/dependencies.rb:512:in `load_missing_constant'
+activesupport (5.0.2) lib/active_support/dependencies.rb:203:in `const_missing'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:270:in `const_get'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:270:in `block in constantize'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `constantize'
+activesupport (5.0.2) lib/active_support/dependencies.rb:583:in `get'
+activesupport (5.0.2) lib/active_support/dependencies.rb:614:in `constantize'
+actionpack (5.0.2) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:725:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
+rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.2) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.2) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.2) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.2) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.8ms)
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (60.4ms)
+  [1m[36mInvoiceItem Load (0.8ms)[0m  [1m[34mSELECT  "invoice_items".* FROM "invoice_items" ORDER BY "invoice_items"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/api/v1/projects/most_bid_project" for ::1 at 2017-06-07 17:54:51 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/projects/most_bid_project"):
+  
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered collection of /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [30 times] (22.2ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (9.5ms)
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (10.3ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (129.3ms)
+Started GET "/api/v1/projects/most_bid_project" for ::1 at 2017-06-07 17:54:57 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/projects/most_bid_project"):
+  
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered collection of /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [30 times] (10.7ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.9ms)
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (103.5ms)
+Started GET "/api/v1/projects/most_bid_project" for ::1 at 2017-06-07 17:54:58 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/projects/most_bid_project"):
+  
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered collection of /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [30 times] (10.9ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (101.7ms)
+Started GET "/api/v1/projects/most_bid_project" for ::1 at 2017-06-07 17:54:59 -0600
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/projects/most_bid_project"):
+  
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered collection of /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [30 times] (11.4ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (98.5ms)
+Started POST "/blazer/queries/run" for ::1 at 2017-06-07 17:55:23 -0600
+  
+ActionController::RoutingError (No route matches [POST] "/blazer/queries/run"):
+  
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.text.erb
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.8ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.text.erb (18.4ms)
+Started POST "/blazer/queries/run" for ::1 at 2017-06-07 17:55:25 -0600
+  
+ActionController::RoutingError (No route matches [POST] "/blazer/queries/run"):
+  
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.text.erb
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.7ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.text.erb (18.5ms)
+  [1m[35m (14.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(185307495455867925);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (19.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to InstallBlazer (20170617234928)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (69.8ms)[0m  [1m[35mCREATE TABLE "blazer_queries" ("id" serial primary key, "creator_id" integer, "name" character varying, "description" text, "statement" text, "data_source" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_blazer_queries_on_creator_id" ON "blazer_queries"  ("creator_id")[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "blazer_audits" ("id" serial primary key, "user_id" integer, "query_id" integer, "statement" text, "data_source" character varying, "created_at" timestamp)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_blazer_audits_on_user_id" ON "blazer_audits"  ("user_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_blazer_audits_on_query_id" ON "blazer_audits"  ("query_id")[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "blazer_dashboards" ("id" serial primary key, "creator_id" integer, "name" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_blazer_dashboards_on_creator_id" ON "blazer_dashboards"  ("creator_id")[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "blazer_dashboard_queries" ("id" serial primary key, "dashboard_id" integer, "query_id" integer, "position" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_blazer_dashboard_queries_on_dashboard_id" ON "blazer_dashboard_queries"  ("dashboard_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_blazer_dashboard_queries_on_query_id" ON "blazer_dashboard_queries"  ("query_id")[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "blazer_checks" ("id" serial primary key, "creator_id" integer, "query_id" integer, "state" character varying, "schedule" character varying, "emails" text, "check_type" character varying, "message" text, "last_run_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_blazer_checks_on_creator_id" ON "blazer_checks"  ("creator_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_blazer_checks_on_query_id" ON "blazer_checks"  ("query_id")[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170617234928"]]
+  [1m[35m (3.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(185307495455867925)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started DELETE "/api/v1/invoice_items" for ::1 at 2017-06-18 12:50:58 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (7.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/invoice_items"):
+  
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered collection of /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [30 times] (21.8ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (12.7ms)
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (13.3ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (118.7ms)
+Started DELETE "/api/v1/customers" for ::1 at 2017-06-18 12:51:08 -0600
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/customers"):
+  
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered collection of /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [30 times] (11.3ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.2ms)
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (78.9ms)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (13.8ms)[0m  [1m[32mINSERT INTO "invoice_items" DEFAULT VALUES RETURNING "id"[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mInvoiceItem Load (0.4ms)[0m  [1m[34mSELECT  "invoice_items".* FROM "invoice_items" ORDER BY "invoice_items"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mInvoiceItem Load (0.5ms)[0m  [1m[34mSELECT "invoice_items".* FROM "invoice_items"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(185307495455867925);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddTimestampsToItems (20170619000102)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (32.7ms)[0m  [1m[35mALTER TABLE "items" ADD "created_at" timestamp(0)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "items" ADD "updated_at" timestamp(0)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170619000102"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(185307495455867925)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(185307495455867925);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddTimestampsToInvoiceItems (20170619000229)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "invoice_items" ADD "created_at" timestamp(0)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "invoice_items" ADD "updated_at" timestamp(0)[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170619000229"]]
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(185307495455867925)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(185307495455867925);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (25.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddForeignKeyItemAndInvoiceToInvoiceItem (20170619155624)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(185307495455867925)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(185307495455867925);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddForeignKeyInvoiceItemToItemAndInvoice (20170619160213)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (29.8ms)[0m  [1m[35mALTER TABLE "item" ADD CONSTRAINT "fk_rails_54bbc35b35"
+FOREIGN KEY ("invoice_item_id")
+  REFERENCES "invoice_item" ("id")
+[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(185307495455867925)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(185307495455867925);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddForeignKeyInvoiceItemToItemAndInvoice (20170619160213)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (29.1ms)[0m  [1m[35mALTER TABLE "items" ADD CONSTRAINT "fk_rails_6cf81f9897"
+FOREIGN KEY ("invoice_item_id")
+  REFERENCES "invoice_items" ("id")
+[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(185307495455867925)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(185307495455867925);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddForeignKeyInvoiceItemToItemAndInvoice (20170619160213)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.8ms)[0m  [1m[35mALTER TABLE "items" ADD CONSTRAINT "fk_rails_6cf81f9897"
+FOREIGN KEY ("invoice_item_id")
+  REFERENCES "invoice_item" ("id")
+[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(185307495455867925)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(185307495455867925);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddItemToInvoiceItems (20170619161155)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (32.9ms)[0m  [1m[35mALTER TABLE "invoice_items" ADD "item_id" integer[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE  INDEX  "index_invoice_items_on_item_id" ON "invoice_items"  ("item_id")[0m
+  [1m[35m (16.7ms)[0m  [1m[35mALTER TABLE "invoice_items" ADD CONSTRAINT "fk_rails_99f31d79ba"
+FOREIGN KEY ("item_id")
+  REFERENCES "items" ("id")
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "invoice_items" ADD "invoice_id" integer[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_invoice_items_on_invoice_id" ON "invoice_items"  ("invoice_id")[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "invoice_items" ADD CONSTRAINT "fk_rails_25bf3d2c5e"
+FOREIGN KEY ("invoice_id")
+  REFERENCES "invoices" ("id")
+[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170619161155"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(185307495455867925)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(185307495455867925);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddCustomerAndMerchantToInvoices (20170619161419)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "invoices" ADD "customer_id" integer[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX  "index_invoices_on_customer_id" ON "invoices"  ("customer_id")[0m
+  [1m[35m (3.8ms)[0m  [1m[35mALTER TABLE "invoices" ADD CONSTRAINT "fk_rails_0d349e632f"
+FOREIGN KEY ("customer_id")
+  REFERENCES "customers" ("id")
+[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "invoices" ADD "merchant_id" integer[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_invoices_on_merchant_id" ON "invoices"  ("merchant_id")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "invoices" ADD CONSTRAINT "fk_rails_b692866c6a"
+FOREIGN KEY ("merchant_id")
+  REFERENCES "merchants" ("id")
+[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170619161419"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(185307495455867925)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(185307495455867925);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to ChangeColumnName (20170619161813)
+  [1m[35m (5.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.4ms)[0m  [1m[35mALTER TABLE "invoices" RENAME COLUMN "name" TO "status"[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170619161813"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(185307495455867925)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(185307495455867925);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to RemoveDescriptionFromInvoices (20170619162408)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (31.0ms)[0m  [1m[35mALTER TABLE "invoices" DROP "description"[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170619162408"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(185307495455867925)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(185307495455867925);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUnitPriceToItems (20170619163723)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.0ms)[0m  [1m[35mALTER TABLE "items" ADD "unit_price" integer[0m
+  [1m[35mSQL (6.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170619163723"]]
+  [1m[35m (6.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(185307495455867925)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(185307495455867925);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddMerchantIdToItems (20170619163819)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "items" ADD "merchant_id" integer[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE  INDEX  "index_items_on_merchant_id" ON "items"  ("merchant_id")[0m
+  [1m[35m (3.3ms)[0m  [1m[35mALTER TABLE "items" ADD CONSTRAINT "fk_rails_ba3b0b4b5e"
+FOREIGN KEY ("merchant_id")
+  REFERENCES "merchants" ("id")
+[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170619163819"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(185307495455867925)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(185307495455867925);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to RemoveInvoiceIdFromTransactions (20170619163952)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "transactions" DROP "invoice_id"[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170619163952"]]
+  [1m[35m (5.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(185307495455867925)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(185307495455867925);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddInvoiceIdToTransactions (20170619164132)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "transactions" ADD "invoice_id" integer[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE  INDEX  "index_transactions_on_invoice_id" ON "transactions"  ("invoice_id")[0m
+  [1m[35m (2.4ms)[0m  [1m[35mALTER TABLE "transactions" ADD CONSTRAINT "fk_rails_6b611ee905"
+FOREIGN KEY ("invoice_id")
+  REFERENCES "invoices" ("id")
+[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170619164132"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(185307495455867925)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/blazer" for ::1 at 2017-06-20 00:50:29 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+ActionController::RoutingError (undefined method `protect_from_forgery' for Blazer::BaseController:Class):
+  
+blazer (1.8.0) app/controllers/blazer/base_controller.rb:13:in `<class:BaseController>'
+blazer (1.8.0) app/controllers/blazer/base_controller.rb:2:in `<module:Blazer>'
+blazer (1.8.0) app/controllers/blazer/base_controller.rb:1:in `<top (required)>'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `block in load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:662:in `new_constants_in'
+activesupport (5.0.2) lib/active_support/dependencies.rb:476:in `load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:375:in `block in require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `block in load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:12:in `block in loading'
+activesupport (5.0.2) lib/active_support/concurrency/share_lock.rb:150:in `exclusive'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:11:in `loading'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies.rb:358:in `require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:511:in `load_missing_constant'
+activesupport (5.0.2) lib/active_support/dependencies.rb:203:in `const_missing'
+blazer (1.8.0) app/controllers/blazer/queries_controller.rb:2:in `<module:Blazer>'
+blazer (1.8.0) app/controllers/blazer/queries_controller.rb:1:in `<top (required)>'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `block in load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:662:in `new_constants_in'
+activesupport (5.0.2) lib/active_support/dependencies.rb:476:in `load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:375:in `block in require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `block in load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:12:in `block in loading'
+activesupport (5.0.2) lib/active_support/concurrency/share_lock.rb:150:in `exclusive'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:11:in `loading'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies.rb:358:in `require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:511:in `load_missing_constant'
+activesupport (5.0.2) lib/active_support/dependencies.rb:203:in `const_missing'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:270:in `const_get'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:270:in `block in constantize'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `constantize'
+activesupport (5.0.2) lib/active_support/dependencies.rb:583:in `get'
+activesupport (5.0.2) lib/active_support/dependencies.rb:614:in `constantize'
+actionpack (5.0.2) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:725:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+railties (5.0.2) lib/rails/railtie.rb:193:in `public_send'
+railties (5.0.2) lib/rails/railtie.rb:193:in `method_missing'
+actionpack (5.0.2) lib/action_dispatch/routing/mapper.rb:17:in `block in <class:Constraints>'
+actionpack (5.0.2) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:725:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
+rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.2) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.2) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.2) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.2) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered collection of /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [45 times] (22.8ms)
+  Rendered collection of /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [31 times] (7.4ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (11.5ms)
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (16.7ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (159.8ms)
+Started GET "/" for ::1 at 2017-06-20 00:52:02 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb (5.8ms)
+Completed 200 OK in 21ms (Views: 17.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2017-06-20 00:52:28 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb (4.9ms)
+Completed 200 OK in 20ms (Views: 17.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/blazer" for ::1 at 2017-06-20 00:52:33 -0600
+  
+ActionController::RoutingError (undefined method `protect_from_forgery' for Blazer::BaseController:Class):
+  
+blazer (1.8.0) app/controllers/blazer/base_controller.rb:13:in `<class:BaseController>'
+blazer (1.8.0) app/controllers/blazer/base_controller.rb:2:in `<module:Blazer>'
+blazer (1.8.0) app/controllers/blazer/base_controller.rb:1:in `<top (required)>'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `block in load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:662:in `new_constants_in'
+activesupport (5.0.2) lib/active_support/dependencies.rb:476:in `load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:375:in `block in require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `block in load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:12:in `block in loading'
+activesupport (5.0.2) lib/active_support/concurrency/share_lock.rb:150:in `exclusive'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:11:in `loading'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies.rb:358:in `require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:511:in `load_missing_constant'
+activesupport (5.0.2) lib/active_support/dependencies.rb:203:in `const_missing'
+blazer (1.8.0) app/controllers/blazer/queries_controller.rb:2:in `<module:Blazer>'
+blazer (1.8.0) app/controllers/blazer/queries_controller.rb:1:in `<top (required)>'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `block in load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:662:in `new_constants_in'
+activesupport (5.0.2) lib/active_support/dependencies.rb:476:in `load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:375:in `block in require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `block in load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:12:in `block in loading'
+activesupport (5.0.2) lib/active_support/concurrency/share_lock.rb:150:in `exclusive'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:11:in `loading'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies.rb:358:in `require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:511:in `load_missing_constant'
+activesupport (5.0.2) lib/active_support/dependencies.rb:203:in `const_missing'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:270:in `const_get'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:270:in `block in constantize'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `constantize'
+activesupport (5.0.2) lib/active_support/dependencies.rb:583:in `get'
+activesupport (5.0.2) lib/active_support/dependencies.rb:614:in `constantize'
+actionpack (5.0.2) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:725:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+railties (5.0.2) lib/rails/railtie.rb:193:in `public_send'
+railties (5.0.2) lib/rails/railtie.rb:193:in `method_missing'
+actionpack (5.0.2) lib/action_dispatch/routing/mapper.rb:17:in `block in <class:Constraints>'
+actionpack (5.0.2) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:725:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
+rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.2) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.2) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.2) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.2) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered collection of /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [45 times] (10.1ms)
+  Rendered collection of /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [31 times] (7.4ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (8.2ms)
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (10.0ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (131.9ms)
+Started GET "/blazer" for ::1 at 2017-06-20 01:05:33 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+ActionController::RoutingError (undefined method `protect_from_forgery' for Blazer::BaseController:Class):
+  
+blazer (1.8.0) app/controllers/blazer/base_controller.rb:13:in `<class:BaseController>'
+blazer (1.8.0) app/controllers/blazer/base_controller.rb:2:in `<module:Blazer>'
+blazer (1.8.0) app/controllers/blazer/base_controller.rb:1:in `<top (required)>'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `block in load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:662:in `new_constants_in'
+activesupport (5.0.2) lib/active_support/dependencies.rb:476:in `load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:375:in `block in require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `block in load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:12:in `block in loading'
+activesupport (5.0.2) lib/active_support/concurrency/share_lock.rb:150:in `exclusive'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:11:in `loading'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies.rb:358:in `require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:511:in `load_missing_constant'
+activesupport (5.0.2) lib/active_support/dependencies.rb:203:in `const_missing'
+blazer (1.8.0) app/controllers/blazer/queries_controller.rb:2:in `<module:Blazer>'
+blazer (1.8.0) app/controllers/blazer/queries_controller.rb:1:in `<top (required)>'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `block in load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:662:in `new_constants_in'
+activesupport (5.0.2) lib/active_support/dependencies.rb:476:in `load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:375:in `block in require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `block in load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:12:in `block in loading'
+activesupport (5.0.2) lib/active_support/concurrency/share_lock.rb:150:in `exclusive'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:11:in `loading'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies.rb:358:in `require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:511:in `load_missing_constant'
+activesupport (5.0.2) lib/active_support/dependencies.rb:203:in `const_missing'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:270:in `const_get'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:270:in `block in constantize'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `constantize'
+activesupport (5.0.2) lib/active_support/dependencies.rb:583:in `get'
+activesupport (5.0.2) lib/active_support/dependencies.rb:614:in `constantize'
+actionpack (5.0.2) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:725:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+railties (5.0.2) lib/rails/railtie.rb:193:in `public_send'
+railties (5.0.2) lib/rails/railtie.rb:193:in `method_missing'
+actionpack (5.0.2) lib/action_dispatch/routing/mapper.rb:17:in `block in <class:Constraints>'
+actionpack (5.0.2) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:725:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
+rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.2) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.2) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.2) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.2) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered collection of /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [45 times] (22.0ms)
+  Rendered collection of /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [31 times] (7.5ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (8.9ms)
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (9.6ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (144.8ms)
+Started GET "/blazer" for ::1 at 2017-06-20 01:07:02 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+ActionController::RoutingError (undefined method `protect_from_forgery' for Blazer::BaseController:Class):
+  
+blazer (1.8.0) app/controllers/blazer/base_controller.rb:13:in `<class:BaseController>'
+blazer (1.8.0) app/controllers/blazer/base_controller.rb:2:in `<module:Blazer>'
+blazer (1.8.0) app/controllers/blazer/base_controller.rb:1:in `<top (required)>'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `block in load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:662:in `new_constants_in'
+activesupport (5.0.2) lib/active_support/dependencies.rb:476:in `load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:375:in `block in require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `block in load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:12:in `block in loading'
+activesupport (5.0.2) lib/active_support/concurrency/share_lock.rb:150:in `exclusive'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:11:in `loading'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies.rb:358:in `require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:511:in `load_missing_constant'
+activesupport (5.0.2) lib/active_support/dependencies.rb:203:in `const_missing'
+blazer (1.8.0) app/controllers/blazer/queries_controller.rb:2:in `<module:Blazer>'
+blazer (1.8.0) app/controllers/blazer/queries_controller.rb:1:in `<top (required)>'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `block in load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:662:in `new_constants_in'
+activesupport (5.0.2) lib/active_support/dependencies.rb:476:in `load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:375:in `block in require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `block in load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:12:in `block in loading'
+activesupport (5.0.2) lib/active_support/concurrency/share_lock.rb:150:in `exclusive'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:11:in `loading'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies.rb:358:in `require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:511:in `load_missing_constant'
+activesupport (5.0.2) lib/active_support/dependencies.rb:203:in `const_missing'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:270:in `const_get'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:270:in `block in constantize'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `constantize'
+activesupport (5.0.2) lib/active_support/dependencies.rb:583:in `get'
+activesupport (5.0.2) lib/active_support/dependencies.rb:614:in `constantize'
+actionpack (5.0.2) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:725:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+railties (5.0.2) lib/rails/railtie.rb:193:in `public_send'
+railties (5.0.2) lib/rails/railtie.rb:193:in `method_missing'
+actionpack (5.0.2) lib/action_dispatch/routing/mapper.rb:17:in `block in <class:Constraints>'
+actionpack (5.0.2) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:725:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
+rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.2) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.2) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.2) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.2) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered collection of /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [45 times] (12.6ms)
+  Rendered collection of /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [31 times] (6.4ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (9.1ms)
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (8.9ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (136.5ms)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(185307495455867925);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to InstallBlazer (20170617234928)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (30.8ms)[0m  [1m[35mDROP TABLE "blazer_checks"[0m
+  [1m[35m (1.7ms)[0m  [1m[35mDROP TABLE "blazer_dashboard_queries"[0m
+  [1m[35m (2.1ms)[0m  [1m[35mDROP TABLE "blazer_dashboards"[0m
+  [1m[35m (2.2ms)[0m  [1m[35mDROP TABLE "blazer_audits"[0m
+  [1m[35m (1.7ms)[0m  [1m[35mDROP TABLE "blazer_queries"[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20170617234928"]]
+  [1m[35m (8.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(185307495455867925)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(185307495455867925);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to InstallBlazer (20170620071417)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (39.1ms)[0m  [1m[35mCREATE TABLE "blazer_queries" ("id" serial primary key, "creator_id" integer, "name" character varying, "description" text, "statement" text, "data_source" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_blazer_queries_on_creator_id" ON "blazer_queries"  ("creator_id")[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "blazer_audits" ("id" serial primary key, "user_id" integer, "query_id" integer, "statement" text, "data_source" character varying, "created_at" timestamp)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_blazer_audits_on_user_id" ON "blazer_audits"  ("user_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_blazer_audits_on_query_id" ON "blazer_audits"  ("query_id")[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "blazer_dashboards" ("id" serial primary key, "creator_id" integer, "name" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_blazer_dashboards_on_creator_id" ON "blazer_dashboards"  ("creator_id")[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "blazer_dashboard_queries" ("id" serial primary key, "dashboard_id" integer, "query_id" integer, "position" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_blazer_dashboard_queries_on_dashboard_id" ON "blazer_dashboard_queries"  ("dashboard_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX  "index_blazer_dashboard_queries_on_query_id" ON "blazer_dashboard_queries"  ("query_id")[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "blazer_checks" ("id" serial primary key, "creator_id" integer, "query_id" integer, "state" character varying, "schedule" character varying, "emails" text, "check_type" character varying, "message" text, "last_run_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX  "index_blazer_checks_on_creator_id" ON "blazer_checks"  ("creator_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX  "index_blazer_checks_on_query_id" ON "blazer_checks"  ("query_id")[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170620071417"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(185307495455867925)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/blazer" for ::1 at 2017-06-20 01:14:56 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+ActionController::RoutingError (undefined method `protect_from_forgery' for Blazer::BaseController:Class):
+  
+blazer (1.8.0) app/controllers/blazer/base_controller.rb:13:in `<class:BaseController>'
+blazer (1.8.0) app/controllers/blazer/base_controller.rb:2:in `<module:Blazer>'
+blazer (1.8.0) app/controllers/blazer/base_controller.rb:1:in `<top (required)>'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `block in load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:662:in `new_constants_in'
+activesupport (5.0.2) lib/active_support/dependencies.rb:476:in `load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:375:in `block in require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `block in load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:12:in `block in loading'
+activesupport (5.0.2) lib/active_support/concurrency/share_lock.rb:150:in `exclusive'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:11:in `loading'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies.rb:358:in `require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:511:in `load_missing_constant'
+activesupport (5.0.2) lib/active_support/dependencies.rb:203:in `const_missing'
+blazer (1.8.0) app/controllers/blazer/queries_controller.rb:2:in `<module:Blazer>'
+blazer (1.8.0) app/controllers/blazer/queries_controller.rb:1:in `<top (required)>'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `block in load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:662:in `new_constants_in'
+activesupport (5.0.2) lib/active_support/dependencies.rb:476:in `load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:375:in `block in require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `block in load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:12:in `block in loading'
+activesupport (5.0.2) lib/active_support/concurrency/share_lock.rb:150:in `exclusive'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:11:in `loading'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies.rb:358:in `require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:511:in `load_missing_constant'
+activesupport (5.0.2) lib/active_support/dependencies.rb:203:in `const_missing'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:270:in `const_get'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:270:in `block in constantize'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `constantize'
+activesupport (5.0.2) lib/active_support/dependencies.rb:583:in `get'
+activesupport (5.0.2) lib/active_support/dependencies.rb:614:in `constantize'
+actionpack (5.0.2) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:725:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+railties (5.0.2) lib/rails/railtie.rb:193:in `public_send'
+railties (5.0.2) lib/rails/railtie.rb:193:in `method_missing'
+actionpack (5.0.2) lib/action_dispatch/routing/mapper.rb:17:in `block in <class:Constraints>'
+actionpack (5.0.2) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:725:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
+rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.2) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.2) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.2) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.2) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered collection of /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [45 times] (29.4ms)
+  Rendered collection of /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [31 times] (7.1ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (9.5ms)
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (12.7ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (147.2ms)
+Started GET "/blazer" for ::1 at 2017-06-20 01:22:26 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+ActionController::RoutingError (undefined method `protect_from_forgery' for Blazer::BaseController:Class):
+  
+blazer (1.8.0) app/controllers/blazer/base_controller.rb:13:in `<class:BaseController>'
+blazer (1.8.0) app/controllers/blazer/base_controller.rb:2:in `<module:Blazer>'
+blazer (1.8.0) app/controllers/blazer/base_controller.rb:1:in `<top (required)>'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `block in load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:662:in `new_constants_in'
+activesupport (5.0.2) lib/active_support/dependencies.rb:476:in `load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:375:in `block in require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `block in load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:12:in `block in loading'
+activesupport (5.0.2) lib/active_support/concurrency/share_lock.rb:150:in `exclusive'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:11:in `loading'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies.rb:358:in `require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:511:in `load_missing_constant'
+activesupport (5.0.2) lib/active_support/dependencies.rb:203:in `const_missing'
+blazer (1.8.0) app/controllers/blazer/queries_controller.rb:2:in `<module:Blazer>'
+blazer (1.8.0) app/controllers/blazer/queries_controller.rb:1:in `<top (required)>'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `block in load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:662:in `new_constants_in'
+activesupport (5.0.2) lib/active_support/dependencies.rb:476:in `load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:375:in `block in require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `block in load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:12:in `block in loading'
+activesupport (5.0.2) lib/active_support/concurrency/share_lock.rb:150:in `exclusive'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:11:in `loading'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies.rb:358:in `require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:511:in `load_missing_constant'
+activesupport (5.0.2) lib/active_support/dependencies.rb:203:in `const_missing'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:270:in `const_get'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:270:in `block in constantize'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `constantize'
+activesupport (5.0.2) lib/active_support/dependencies.rb:583:in `get'
+activesupport (5.0.2) lib/active_support/dependencies.rb:614:in `constantize'
+actionpack (5.0.2) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:725:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+railties (5.0.2) lib/rails/railtie.rb:193:in `public_send'
+railties (5.0.2) lib/rails/railtie.rb:193:in `method_missing'
+actionpack (5.0.2) lib/action_dispatch/routing/mapper.rb:17:in `block in <class:Constraints>'
+actionpack (5.0.2) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:725:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
+rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.2) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.2) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.2) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.2) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered collection of /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [45 times] (20.3ms)
+  Rendered collection of /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [31 times] (6.9ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (12.3ms)
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (13.1ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (147.0ms)
+Started GET "/blazer" for ::1 at 2017-06-20 01:23:29 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+ActionController::RoutingError (undefined method `protect_from_forgery' for Blazer::BaseController:Class):
+  
+blazer (1.8.0) app/controllers/blazer/base_controller.rb:13:in `<class:BaseController>'
+blazer (1.8.0) app/controllers/blazer/base_controller.rb:2:in `<module:Blazer>'
+blazer (1.8.0) app/controllers/blazer/base_controller.rb:1:in `<top (required)>'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `block in load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:662:in `new_constants_in'
+activesupport (5.0.2) lib/active_support/dependencies.rb:476:in `load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:375:in `block in require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `block in load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:12:in `block in loading'
+activesupport (5.0.2) lib/active_support/concurrency/share_lock.rb:150:in `exclusive'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:11:in `loading'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies.rb:358:in `require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:511:in `load_missing_constant'
+activesupport (5.0.2) lib/active_support/dependencies.rb:203:in `const_missing'
+blazer (1.8.0) app/controllers/blazer/queries_controller.rb:2:in `<module:Blazer>'
+blazer (1.8.0) app/controllers/blazer/queries_controller.rb:1:in `<top (required)>'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:477:in `block in load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:662:in `new_constants_in'
+activesupport (5.0.2) lib/active_support/dependencies.rb:476:in `load_file'
+activesupport (5.0.2) lib/active_support/dependencies.rb:375:in `block in require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `block in load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:12:in `block in loading'
+activesupport (5.0.2) lib/active_support/concurrency/share_lock.rb:150:in `exclusive'
+activesupport (5.0.2) lib/active_support/dependencies/interlock.rb:11:in `loading'
+activesupport (5.0.2) lib/active_support/dependencies.rb:37:in `load_interlock'
+activesupport (5.0.2) lib/active_support/dependencies.rb:358:in `require_or_load'
+activesupport (5.0.2) lib/active_support/dependencies.rb:511:in `load_missing_constant'
+activesupport (5.0.2) lib/active_support/dependencies.rb:203:in `const_missing'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:270:in `const_get'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:270:in `block in constantize'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `constantize'
+activesupport (5.0.2) lib/active_support/dependencies.rb:583:in `get'
+activesupport (5.0.2) lib/active_support/dependencies.rb:614:in `constantize'
+actionpack (5.0.2) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:725:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+railties (5.0.2) lib/rails/railtie.rb:193:in `public_send'
+railties (5.0.2) lib/rails/railtie.rb:193:in `method_missing'
+actionpack (5.0.2) lib/action_dispatch/routing/mapper.rb:17:in `block in <class:Constraints>'
+actionpack (5.0.2) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:725:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
+rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.2) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.2) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.2) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.2) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered collection of /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [45 times] (13.0ms)
+  Rendered collection of /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [31 times] (6.1ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (12.0ms)
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (12.2ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (126.1ms)
+Started GET "/rails/db" for ::1 at 2017-06-20 01:31:49 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RailsDb::DashboardController#index as HTML
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/rails_db-1.6.0/app/views/rails_db/dashboard/index.html.erb within layouts/rails_db/application
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/rails_db-1.6.0/app/views/rails_db/dashboard/index.html.erb within layouts/rails_db/application (577.4ms)
+Completed 500 Internal Server Error in 599ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (couldn't find file 'jquery' with type 'application/javascript'
+Checked in these paths: 
+  /Users/MVA/mod3/projects/rales_engine/app/assets/config
+  /Users/MVA/mod3/projects/rales_engine/app/assets/images
+  /Users/MVA/mod3/projects/rales_engine/app/assets/javascripts
+  /Users/MVA/mod3/projects/rales_engine/app/assets/stylesheets
+  /Users/MVA/mod3/projects/rales_engine/vendor/assets/javascripts
+  /Users/MVA/mod3/projects/rales_engine/vendor/assets/stylesheets
+  /Users/MVA/.rvm/gems/ruby-2.3.0/gems/blazer-1.8.0/app/assets/fonts
+  /Users/MVA/.rvm/gems/ruby-2.3.0/gems/blazer-1.8.0/app/assets/javascripts
+  /Users/MVA/.rvm/gems/ruby-2.3.0/gems/blazer-1.8.0/app/assets/stylesheets
+  /Users/MVA/.rvm/gems/ruby-2.3.0/gems/chartkick-2.2.4/app/assets/javascripts
+  /Users/MVA/.rvm/gems/ruby-2.3.0/gems/chartkick-2.2.4/vendor/assets/javascripts
+  /Users/MVA/.rvm/gems/ruby-2.3.0/gems/rails_db-1.6.0/app/assets/images
+  /Users/MVA/.rvm/gems/ruby-2.3.0/gems/rails_db-1.6.0/app/assets/javascripts
+  /Users/MVA/.rvm/gems/ruby-2.3.0/gems/rails_db-1.6.0/app/assets/stylesheets
+  /Users/MVA/.rvm/gems/ruby-2.3.0/gems/codemirror-rails-5.16.0/vendor/assets/javascripts
+  /Users/MVA/.rvm/gems/ruby-2.3.0/gems/codemirror-rails-5.16.0/vendor/assets/stylesheets
+  /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actioncable-5.0.2/lib/assets/compiled):
+    1: <%= image_tag 'rails_db/logo.png' %>
+    2: 
+    3: <br/>
+    4: <br/>
+  
+app/assets/javascripts/application.js:13
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (9.1ms)
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.8ms)
+  Rendering /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (11.8ms)
+  Rendered /Users/MVA/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (84.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(185307495455867925);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to InstallBlazer (20170620071417)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.2ms)[0m  [1m[35mDROP TABLE "blazer_checks"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE "blazer_dashboard_queries"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE "blazer_dashboards"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE "blazer_audits"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE "blazer_queries"[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20170620071417"]]
+  [1m[35m (23.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(185307495455867925)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m

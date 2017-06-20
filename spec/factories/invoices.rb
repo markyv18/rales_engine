@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :invoice do
-    name "Dr Evil purchase"
-    description "One FaFillion"
+    status ["ordered", "paid", "pending", "shipped", "closed"].sample
+    customer
+    merchant
   end
 end

@@ -74,10 +74,10 @@ describe "transactions API" do
 
   it "can find a transaction by their invoice_id" do
 
-    transaction1 = create(:transaction, invoice_id: 5)
-    transaction2 = create(:transaction, invoice_id: 6)
+    transaction1 = create(:transaction) #, invoice: 5)
+    transaction2 = create(:transaction) #, invoice: 6)
 
-    get "/api/v1/transactions/find?invoice_id=#{transaction1.invoice_id}"
+    get "/api/v1/transactions/find?invoice_id=#{transaction1.invoice[:id]}"
 
     transaction = JSON.parse(response.body, symbolize_names: true)
 
@@ -166,15 +166,16 @@ describe "transactions API" do
   end
 
   it "can find all transactions by invoice_id" do
+    invoice = create(:invoice)
     create_list(:transaction, 5)
-    create_list(:transaction, 3, invoice_id: 6)
+    create_list(:transaction, 2, invoice: invoice)
 
-    get "/api/v1/transactions/find_all?invoice_id=6"
+    get "/api/v1/transactions/find_all?invoice_id=#{invoice.id}"
     transaction = JSON.parse(response.body)
 
     expect(response).to be_success
 
-    expect(transaction.count).to eq(3)
+    expect(transaction.count).to eq(2)
   end
 
   it "can find all transactions by created_at timestamp" do
